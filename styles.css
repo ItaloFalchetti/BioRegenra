@@ -100,3 +100,45 @@ footer {
   background: #333;
   color: #fff;
 }
+
+
+/* Estilo para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+form button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form button:hover {
+  background: #555;
+}
+
+/* Mensaje de estado */
+#mensaje {
+  font-size: 1rem;
+}
