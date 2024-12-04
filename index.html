@@ -11,13 +11,26 @@
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="#inicio">Inicio de la empresa</a></li>
-        <li><a href="#acerca">Acerca de</a></li>
-        <li><a href="#servicios">Servicios</a></li>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#inicio">
+          <img src="img/logo.png" alt="Logo Empresa" class="logo-img">
+        </a>
+      </div>
+      
+      <!-- Botón hamburguesa para móvil -->
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+  
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#acerca">Nuestra Empresa</a></li>
+        <li><a href="#servicios">Soluciones Agrícolas</a></li>
         <li><a href="#metricas">Metricas</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="nav-button">Contáctanos</a></li>
       </ul>
     </nav>
   </header>
@@ -39,13 +52,48 @@
         <button class="carousel-next" onclick="moverCarrusel(1)">&#10095;</button>
     </div>
     
-    <h1>Bienvenido a Nuestra Página</h1>
-    <p>Somos expertos en ayudarte a alcanzar tus objetivos.</p>
+    <div class="hero-content">
+      <h1>Bienvenido a Nuestra Página</h1>
+      <p>Somos expertos en ayudarte a alcanzar tus objetivos.</p>
+    </div>
   </section>
 
   <section id="acerca" class="seccion">
-    <h2>Acerca de Nosotros</h2>
-    <p>Somos una empresa comprometida con la calidad y la excelencia.</p>
+    <div class="acerca-container">
+      <div class="acerca-imagen">
+        <img src="img/empresa.jpg" alt="Nuestra Empresa">
+      </div>
+      
+      <div class="acerca-contenido">
+        <h2>Acerca de Nosotros</h2>
+        
+        <div class="vision-mision">
+          <div class="mision">
+            <h3>Nuestra Misión</h3>
+            <p>Transformar la agricultura tradicional mediante soluciones tecnológicas innovadoras, 
+               mejorando la productividad y sostenibilidad de nuestros clientes mientras promovemos 
+               prácticas agrícolas responsables con el medio ambiente.</p>
+          </div>
+          
+          <div class="vision">
+            <h3>Nuestra Visión</h3>
+            <p>Ser líderes reconocidos en la transformación digital del sector agroindustrial, 
+               creando un futuro donde la tecnología y la agricultura trabajen en perfecta armonía 
+               para alimentar al mundo de manera sostenible.</p>
+          </div>
+          
+          <div class="valores">
+            <h3>Nuestros Valores</h3>
+            <ul>
+              <li><i class="fas fa-leaf"></i> Innovación Sostenible</li>
+              <li><i class="fas fa-handshake"></i> Compromiso con el Cliente</li>
+              <li><i class="fas fa-shield-alt"></i> Excelencia Operativa</li>
+              <li><i class="fas fa-globe"></i> Responsabilidad Ambiental</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="servicios" class="seccion servicios-grid">
@@ -93,34 +141,55 @@
   </section>
  
   <section id="contacto" class="seccion">
-    <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbgjkdl" method="POST">
-      <label for="rut">Rut:</label>
-      <input type="text" name="rut" id="rut" required><br>
-      
-      <label for="nombre">Nombre completo:</label>
-      <input type="text" name="nombre" id="nombre" required><br>
-      
-      <label for="empresa">Empresa:</label>
-      <input type="text" name="empresa" id="empresa" required><br>
+    <div class="contacto-container">
+      <div class="contacto-info">
+        <h2>¿Listo para revolucionar tu producción agrícola?</h2>
+        <p class="mensaje-destacado">Transformamos desafíos en oportunidades de crecimiento</p>
+        <p class="mensaje-detalle">Nuestro equipo de expertos está preparado para ayudarte a optimizar tus procesos y maximizar tu rendimiento. Con tecnología de punta y soluciones personalizadas, haremos que tu agroindustria alcance su máximo potencial.</p>
+        
+        <div class="contacto-beneficios">
+          <div class="beneficio">
+            <i class="fas fa-check-circle"></i>
+            <span>Asesoría personalizada</span>
+          </div>
+          <div class="beneficio">
+            <i class="fas fa-check-circle"></i>
+            <span>Soluciones a medida</span>
+          </div>
+          <div class="beneficio">
+            <i class="fas fa-check-circle"></i>
+            <span>Soporte técnico especializado</span>
+          </div>
+        </div>
+      </div>
   
-      <label for="fono">Teléfono:</label>
-      <input type="text" name="fono" id="fono" ><br>
-  
-      <label for="email">Correo electrónico:</label>
-      <input type="email" name="email" id="email" required><br>
-    
-      <label for="message">Mensaje:</label>
-      <textarea name="message" id="message" required></textarea><br>
-    
-      <button type="submit">Contactar</button>
-    </form>
-  
-    <p id="mensaje" style="margin-top: 15px; font-weight: bold;"></p>
+      <form action="https://formspree.io/f/xrbgjkdl" method="POST" class="contacto-form">
+        <div class="form-row">
+          <input type="text" name="rut" placeholder="RUT" required>
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+        </div>
+        
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <input type="text" name="fono" placeholder="Teléfono">
+        </div>
+        
+        <div class="form-row full-width">
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+        </div>
+        
+        <div class="form-row full-width">
+          <textarea name="message" placeholder="Cuéntanos sobre tu proyecto o consulta" required></textarea>
+        </div>
+        
+        <button type="submit">Iniciar Conversación <i class="fas fa-arrow-right"></i></button>
+      </form>
+    </div>
   </section>
 
+
   <footer>
-    <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
+    <p>&copy; 2024 Bioregenera. Todos los derechos reservados.</p>
   </footer>
 </body>
 </html>

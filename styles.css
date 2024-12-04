@@ -6,32 +6,143 @@ body {
   line-height: 1.6;
 }
 
-/* Navegación */
+/* Header y Navegación */
 header {
-  background: #333;
-  color: #fff;
-  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
-  list-style: none;
+.navbar {
   display: flex;
-  justify-content: center;
-  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 80px;
+}
+
+/* Estilos del Logo */
+.logo {
+  flex-shrink: 0;
+}
+
+.logo-img {
+  max-height: 90px;
+  width: auto;
+  border-radius: 10px;
+}
+
+/* Navegación principal */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: #fff;
+.nav-links li a {
+  color: var(--color-texto);
   text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-nav ul li a:hover {
-  text-decoration: underline;
+/* Efecto hover para los enlaces */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-primario);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Ajusta según la altura de tu header */
+}
+
+/* Botón de contacto */
+.nav-button {
+  background-color: var(--color-primario);
+  color: white !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px;
+  transition: background-color 0.3s ease !important;
+}
+
+.nav-button:hover {
+  background-color: var(--color-secundario);
+}
+
+.nav-button::after {
+  display: none !important;
+}
+
+/* Menú hamburguesa para móvil */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-primario);
+  transition: all 0.3s ease;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 968px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .nav-button {
+    display: inline-block;
+    margin-top: 1rem;
+  }
 }
 
 /* Secciones */
@@ -42,6 +153,9 @@ nav ul li a:hover {
 
 #inicio {
   background: #f4f4f4;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #acerca {
@@ -146,37 +260,83 @@ form button:hover {
 
 
 /* seccion de diseño del Carrusel */
+/* Estilos del Carrusel */
 .carousel {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
+  height: 100%;
+  z-index: 1;
 }
+
 .carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease;
+  height: 100%;
 }
+
 .carousel-item {
-  min-width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
+
+.carousel-item.active {
+  opacity: 1;
+}
+
 .carousel-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
-.carousel-prev, .carousel-next {
+
+.hero-content {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+  z-index: 2;
+  width: 80%;
+  max-width: 800px;
 }
-.carousel-prev { left: 10px; }
-.carousel-next { right: 10px; }
 
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Overlay para mejorar legibilidad */
+.carousel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+}
 /* fin de seccion de diseño del Carrusel */
 
 
@@ -352,3 +512,308 @@ button[type="submit"]:hover {
 }
 /* fin de seccion de diseño de las metricas */
 
+/* Sección de Contacto */
+.contacto-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Estilos para el contenido informativo */
+.contacto-info {
+  padding-right: 2rem;
+}
+
+.contacto-info h2 {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.mensaje-destacado {
+  font-size: 1.25rem;
+  color: var(--color-secundario);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.mensaje-detalle {
+  color: var(--color-texto);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.contacto-beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.beneficio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.beneficio i {
+  color: var(--color-primario);
+  font-size: 1.25rem;
+}
+
+/* Estilos del formulario */
+.contacto-form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row.full-width {
+  flex-direction: column;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  border-color: var(--color-primario);
+  outline: none;
+  background-color: white;
+}
+
+.contacto-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contacto-form button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contacto-form button:hover {
+  background-color: var(--color-secundario);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Campos de ancho completo */
+.form-row.full-width {
+  display: block; /* Cambia a block para ocupar todo el ancho */
+}
+
+.form-row.full-width,
+.form-row.full-width {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 1rem;
+}
+
+/* Para los campos que van en pares */
+.form-row:not(.full-width) input {
+  width: 50%; /* Cada input ocupa la mitad del espacio */
+  flex: 1; /* Distribuye el espacio equitativamente */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacto-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contacto-info {
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .beneficio {
+    justify-content: center;
+  }
+}
+
+/* Sección Acerca de */
+.acerca-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    align-items: center;
+}
+
+/* Estilos de la imagen */
+.acerca-imagen {
+    height: 100%;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.acerca-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.acerca-imagen:hover img {
+    transform: scale(1.05);
+}
+
+/* Estilos del contenido */
+.acerca-contenido {
+    padding-right: 2rem;
+}
+
+.acerca-contenido h2 {
+    color: var(--color-primario);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.acerca-contenido h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primario);
+}
+
+.vision-mision > div {
+    margin-bottom: 2rem;
+}
+
+.vision-mision h3 {
+    color: var(--color-secundario);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.vision-mision p {
+    line-height: 1.8;
+    color: var(--color-texto);
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos de los valores */
+.valores ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.valores li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.valores i {
+    color: var(--color-primario);
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .acerca-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .acerca-imagen {
+        height: 400px;
+        order: -1; /* Coloca la imagen arriba en móvil */
+    }
+
+    .acerca-contenido {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .acerca-contenido h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .valores ul {
+        grid-template-columns: 1fr;
+    }
+
+    .valores li {
+        justify-content: center;
+    }
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vision-mision > div {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.vision-mision > div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.vision-mision > div:nth-child(3) {
+    animation-delay: 0.4s;
+}

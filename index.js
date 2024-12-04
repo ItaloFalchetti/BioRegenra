@@ -98,3 +98,37 @@ document.addEventListener('DOMContentLoaded', () => {
     animarContadores();
 });
   /* fin de seccion de diseño de las metricas */
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los enlaces del menú
+    const menuLinks = document.querySelectorAll('nav a[href^="#"]');
+    
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Obtener el destino del scroll desde el href
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            // Calcular la posición de scroll
+            const headerOffset = 80; // Ajusta según la altura de tu header
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            // Realizar el scroll suave
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Si tienes menú móvil, ciérralo después del clic
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                document.getElementById('mobile-menu').classList.remove('active');
+            }
+        });
+    });
+});
