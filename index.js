@@ -1,5 +1,4 @@
 <script>
-  // Simular almacenamiento en la consola
   function guardarInformacion(event) {
     event.preventDefault(); // Evita que el formulario recargue la página
 
