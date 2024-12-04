@@ -30,9 +30,21 @@
     mensajeElemento.style.color = tipo === "success" ? "green" : "red";
   };
 
+
+  /* Inicio seccion de carrusell */
+  
   var posicionActual = 0;
   const items = document.querySelectorAll('.carousel-item');
-          
+  // Inicializar el carrusel cuando el DOM esté cargado
+  document.addEventListener('DOMContentLoaded', () => {
+    // Establecer la primera imagen como activa
+    items[0].classList.add('active');
+    
+    // Ocultar las demás imágenes
+    for(let i=1; i < items.length; i++) {
+      items[i].classList.remove('active');
+    }
+  });
   function moverCarrusel(direccion) {
       posicionActual = (posicionActual + direccion + items.length) % items.length;
       document.querySelector('.carousel-inner').style.transform = 
@@ -42,9 +54,9 @@
   // Auto-avance cada 5 segundos
   setInterval(() => moverCarrusel(1), 5000);
 
-
-
   /* fin de seccion de diseño del Carrusel */
+
+
 
   /* seccion de diseño de las metricas */
   // Función para animar contadores
