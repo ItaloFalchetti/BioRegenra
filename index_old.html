@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Básica</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio de la empresa</a></li>
+        <li><a href="#acerca">Acerca de</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio" class="seccion">
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/slide1.jpg" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="img/slide2.jpg" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="img/slide3.jpg" alt="Imagen 3">
+            </div>
+        </div>
+        <button class="carousel-prev" onclick="moverCarrusel(-1)">&#10094;</button>
+        <button class="carousel-next" onclick="moverCarrusel(1)">&#10095;</button>
+    </div>
+    
+    <h1>Bienvenido a Nuestra Página</h1>
+    <p>Somos expertos en ayudarte a alcanzar tus objetivos.</p>
+  </section>
+
+  <section id="servicios" class="seccion servicios-grid">
+    <h2>Nuestras Soluciones Agrícolas</h2>
+    <div class="servicios-container">
+      <div class="servicio-card">
+        <img src="img/icon-tractor.svg" alt="Maquinaria">
+        <h3>Maquinaria Agrícola</h3>
+        <p>Equipamiento de última generación para optimizar sus cultivos</p>
+      </div>
+      <div class="servicio-card">
+        <img src="img/icon-seed.svg" alt="Insumos">
+        <h3>Insumos Agrícolas</h3>
+        <p>Productos de calidad para maximizar su producción</p>
+      </div>
+      <div class="servicio-card">
+        <img src="img/icon-tech.svg" alt="Tecnología">
+        <h3>Agricultura de Precisión</h3>
+        <p>Tecnología de punta para el monitoreo de cultivos</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="metricas" class="seccion">
+    <h2>Nuestro Impacto en Números</h2>
+    <div class="metricas-container">
+      <div class="metrica-card">
+        <i class="fas fa-tractor"></i>
+        <div class="contador" data-objetivo="1500">0</div>
+        <span>Hectáreas Optimizadas</span>
+      </div>
+      
+      <div class="metrica-card">
+        <i class="fas fa-users"></i>
+        <div class="contador" data-objetivo="95">0</div>
+        <span class="simbolo">% Satisfacción</span>
+      </div>
+      
+      <div class="metrica-card">
+        <i class="fas fa-farm"></i>
+        <div class="contador" data-objetivo="250">0</div>
+        <span>Agricultores Asociados</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="acerca" class="seccion">
+    <h2>Acerca de Nosotros</h2>
+    <p>Somos una empresa comprometida con la calidad y la excelencia.</p>
+  </section>
+
+  <section id="servicios" class="seccion">
+    <h2>Nuestros Servicios</h2>
+    <ul>
+      <li>Consultoría profesional</li>
+      <li>Desarrollo de proyectos</li>
+      <li>Soporte técnico</li>
+    </ul>
+  </section>
+
+  <section id="testimonios" class="seccion">
+    <h2>Testimonios</h2>
+    <blockquote>"¡Esta empresa cambió mi vida! 100% recomendados."</blockquote>
+    <cite>- Cliente satisfecho</cite>
+  </section>
+
+ 
+  <section id="contacto" class="seccion">
+    <h2>Contacto</h2>
+    <form action="https://formspree.io/f/xrbgjkdl" method="POST">
+      <label for="rut">Rut:</label>
+      <input type="text" name="rut" id="rut" required><br>
+      
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" name="nombre" id="nombre" required><br>
+      
+      <label for="empresa">Empresa:</label>
+      <input type="text" name="empresa" id="empresa" required><br>
+  
+      <label for="fono">Teléfono:</label>
+      <input type="text" name="fono" id="fono" ><br>
+  
+      <label for="email">Correo electrónico:</label>
+      <input type="email" name="email" id="email" required><br>
+    
+      <label for="message">Mensaje:</label>
+      <textarea name="message" id="message" required></textarea><br>
+    
+      <button type="submit">Contactar</button>
+    </form>
+  
+    <p id="mensaje" style="margin-top: 15px; font-weight: bold;"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
