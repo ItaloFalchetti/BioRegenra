@@ -1,3 +1,4 @@
+  /* seccion de diseño del formulario de contacto */
   function guardarInformacion(event) {
     event.preventDefault(); // Evita que el formulario recargue la página
 
@@ -30,29 +31,36 @@
     mensajeElemento.style.color = tipo === "success" ? "green" : "red";
   };
 
-
   /* Inicio seccion de carrusell */
-  
+  // Variables globales para el carrusel
   var posicionActual = 0;
   const items = document.querySelectorAll('.carousel-item');
+
   // Inicializar el carrusel cuando el DOM esté cargado
   document.addEventListener('DOMContentLoaded', () => {
-    // Establecer la primera imagen como activa
-    items[0].classList.add('active');
-    
-    // Ocultar las demás imágenes
-    for(let i=1; i < items.length; i++) {
-      items[i].classList.remove('active');
-    }
+      // Establecer la primera imagen como activa
+      items[0].classList.add('active');
+      
+      // Ocultar las demás imágenes
+      for(let i=1; i < items.length; i++) {
+          items[i].classList.remove('active');
+      }
   });
-  function moverCarrusel(direccion) {
-      posicionActual = (posicionActual + direccion + items.length) % items.length;
-      document.querySelector('.carousel-inner').style.transform = 
-        `translateX(-${posicionActual * 100}%)`;
+
+  // Función para mover el carrusel
+  function moverCarrusel() {
+      // Remover clase active de la imagen actual
+      items[posicionActual].classList.remove('active');
+      
+      // Calcular siguiente posición
+      posicionActual = (posicionActual + 1) % items.length;
+      
+      // Agregar clase active a la nueva imagen
+      items[posicionActual].classList.add('active');
   }
 
-  // Auto-avance cada 5 segundos
-  setInterval(() => moverCarrusel(1), 5000);
+  // Auto-avance cada 5 segundos (5000 ms)
+  setInterval(moverCarrusel, 5000);
 
   /* fin de seccion de diseño del Carrusel */
 
@@ -132,3 +140,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// Funcionalidad del menú móvil
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+      });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && 
+          !navLinks.contains(e.target) && 
+          navLinks.classList.contains('active')) {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+      }
+  });
+});
+  
