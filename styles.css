@@ -155,6 +155,8 @@ html {
   padding: 0.8rem 1.5rem !important;
   border-radius: 25px;
   transition: background-color 0.3s ease !important;
+  position: relative;
+  animation: pulse 2s infinite;
 }
 
 .nav-button:hover {
@@ -215,33 +217,37 @@ html {
   }
 }
 
-/* Secciones */
+/* Secciones con fondos alternados */
 .seccion {
   padding: 50px 20px;
   text-align: center;
 }
 
 #inicio {
-  background: #f4f4f4;
+  background: transparent; /* Mantener transparente por el carrusel */
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
 
 #acerca {
-  background: #eaeaea;
+  background-color: #ffffff; /* Blanco */
+}
+
+#beneficios {
+  background-color: #cbcbcc; /* Blanco */
 }
 
 #servicios {
-  background: #ddd;
+  background-color: #ffffff; /* Gris  */
 }
 
-#testimonios {
-  background: #ccc;
+#metricas {
+  background-color: #cbcbcc; /* Gris  */
 }
 
 #contacto {
-  background: #bbb;
+  background-color: #ffffff; /* Blanco */
 }
 
 /* Formulario */
@@ -541,7 +547,7 @@ button[type="submit"]:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  padding: 3rem 0;
+  padding: 3rem 1rem;
 }
 
 .metrica-card {
@@ -589,7 +595,7 @@ button[type="submit"]:hover {
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
 }
 
 /* Estilos para el contenido informativo */
@@ -606,7 +612,7 @@ button[type="submit"]:hover {
 
 .mensaje-destacado {
   font-size: 1.25rem;
-  color: var(--color-secundario);
+  color: var(--color-primario);
   font-weight: 600;
   margin-bottom: 1.5rem;
 }
@@ -830,6 +836,7 @@ button[type="submit"]:hover {
 .valores i {
     color: var(--color-primario);
     font-size: 1.2rem;
+    margin-right: 15px;
 }
 
 /* Responsive */
@@ -886,4 +893,52 @@ button[type="submit"]:hover {
 
 .vision-mision > div:nth-child(3) {
     animation-delay: 0.4s;
+}
+
+.texto-justificado {
+  text-align: justify;
+}
+
+.marca-destacada {
+  font-family: 'Montserrat', sans-serif;
+  color: #2c5f2d; /* Color verde del relleno */
+  font-size: 2.5em;
+  font-weight: 800; /* Aumentamos el peso de la fuente para que el borde se vea mejor */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  position: relative;
+  text-shadow: 
+    -1px -1px 0 #fff,  /* Borde blanco superior izquierdo */
+     1px -1px 0 #fff,  /* Borde blanco superior derecho */
+    -1px  1px 0 #fff,  /* Borde blanco inferior izquierdo */
+     1px  1px 0 #fff;  /* Borde blanco inferior derecho */
+}
+
+.marca-destacada::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #2c5f2d, transparent);
+}
+
+.mensaje-detalle {
+  text-align: left;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
+  }
 }
