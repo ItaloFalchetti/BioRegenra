@@ -239,7 +239,7 @@ html {
 }
 
 #servicios {
-  background-color: #f3f3f3; /* Gris  */
+  background-color: #ececec; /* Gris  */
 }
 
 #metricas {
@@ -247,7 +247,7 @@ html {
 }
 
 #contacto {
-  background-color: #f3f3f3; /* Blanco */
+  background-color: #ececec; /* Blanco */
 }
 
 /* Formulario */
@@ -941,4 +941,168 @@ button[type="submit"]:hover {
   100% {
     box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
   }
+}
+
+
+.productos-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.productos-descripcion {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  line-height: 1.6;
+}
+
+.proceso-flow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 4rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+.proceso-item {
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+  min-width: 200px;
+  transition: all 0.3s ease-in-out;
+}
+
+.proceso-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proceso-item i {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.proceso-item p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.proceso-arrow {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+}
+
+.beneficios-productos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.beneficio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  transition: transform 0.3s ease;
+}
+
+.beneficio-item:hover {
+  transform: translateY(-3px);
+}
+
+.beneficio-item i {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .proceso-flow {
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .proceso-item {
+    padding: 1.5rem;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .proceso-flow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .proceso-arrow {
+    transform: rotate(90deg);
+    margin: 1rem 0;
+  }
+  
+  .proceso-item {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .beneficios-productos {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.lab-bg { 
+  background-image: linear-gradient( 
+                    rgba(0, 0, 0, 0.7), 
+                    rgba(0, 0, 0, 0.7) ), 
+                    url('../img/lab-moderno.jpg');
+}
+
+.icon-container {
+  position: relative;
+  height: 120px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+/* Revisemos la estructura del contenedor principal */
+.productos-hero {
+  position: relative;
+  color: white;
+  padding: 8rem 2rem;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.75)
+  ), url('img/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.productos-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.proceso-item:hover {
+  transform: translateY(-5px);
 }
