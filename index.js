@@ -1,4 +1,19 @@
-  /* seccion de diseño del formulario de contacto */
+// Agregar este código al inicio del archivo o dentro del evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Limpiar el formulario al cargar la página
+    const formulario = document.querySelector('.contacto-form');
+    if (formulario) {
+        formulario.reset();
+    }
+    
+    // También podemos limpiar campos específicos si es necesario
+    const select = document.querySelector('.form-row select');
+    if (select) {
+        select.selectedIndex = 0; // Selecciona la primera opción
+    }
+});
+
+/* seccion de diseño del formulario de contacto */
   function guardarInformacion(event) {
     event.preventDefault(); // Evita que el formulario recargue la página
 
